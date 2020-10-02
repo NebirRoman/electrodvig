@@ -1,0 +1,25 @@
+<div class="container">
+    <div class="sidebar">
+        <p>Адмін</p>
+        <ul>
+            <li>
+                <a [routerLink]="['category']" routerLinkActive="active">Категорії</a>
+            </li>
+            <li>
+                <a [routerLink]="['products']" routerLinkActive="active">Товари</a>
+            </li>
+            <li>
+                <a [routerLink]="['orders']" routerLinkActive="active">Замовлення</a>
+            </li>
+            <li>
+                <a [routerLink]="['consultations']" routerLinkActive="active">Заявки</a>
+            </li>
+        </ul>
+        <div class="btn-wrap">
+            <button type="button" class="btn" (click)="logOut()">Вийти</button>
+        </div>
+    </div>
+    <div class="main">
+        <router-outlet></router-outlet>
+    </div>
+</div>

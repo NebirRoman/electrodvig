@@ -1,0 +1,267 @@
+.container{
+    width: 1150px;
+    margin: 0 auto;
+    @media screen and (max-width: 1200px){
+        width: 950px;
+    }
+    @media screen and (max-width: 970px){
+        width: 750px;
+    }
+    @media screen and (max-width: 768px){
+        width: 480px;
+    }
+    @media screen and (max-width: 500px){
+        width: 330px;
+    }
+}
+
+.title{
+    text-align: center;
+    margin: 15px;
+    font-size: 24px;
+    color: rgb(75, 75, 75);
+}
+
+.product{
+    display: flex;
+    justify-content: space-between;
+    @media screen and (max-width: 768px){
+        flex-direction: column;
+    }
+}
+
+.product-img{
+    width: 60%;
+    margin-bottom: 15px;
+    @media screen and (max-width: 768px){
+        width: 100%;
+    }
+    div{
+        width: 100%;
+        height: 300px;
+    }
+}
+
+.product-info{
+    width: 35%;
+    padding-top: 20px;
+    @media screen and (max-width: 768px){
+        width: 100%;
+        margin-bottom: 25px;
+    }
+    .name{
+        font-weight: bold;
+        font-size: 22px;
+        margin-bottom: 10px;
+    }
+    .text{
+        color: red;
+        text-transform: uppercase;
+        font-size: 14px;
+        letter-spacing: 1px;
+        font-weight: bold;
+    }
+}
+
+.buy{
+    margin-top: 50px;
+    padding-top: 20px;
+    border-top: 1px solid rgb(202, 202, 202);
+}
+
+button{
+    width: 120px;
+    height: 40px;
+    background-color: orangered;
+    color: white;
+    font-size: 16px ;
+    text-transform: uppercase;
+    outline: none;
+    border: 1px solid rgb(216, 59, 2);
+    cursor: pointer;
+    margin-right: 20px;
+}
+
+.price{
+    color: rgb(184, 49, 47);
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.description{
+    background-color: lightgray;
+    .container{
+        display: flex;
+        justify-content: space-between;    
+        padding: 20px 10px;
+        @media screen and (max-width: 768px){
+            flex-direction: column;
+        }
+    }
+}
+
+.tech-desc, .del-set{
+    width: 45%;
+    @media screen and (max-width: 768px){
+        width: 100%;
+        margin: 15px 0;
+    }
+    p{
+        text-align: center;
+        font-size: 16px;
+        font-weight: bold;
+        text-transform: uppercase;
+        margin-bottom: 20px;
+    }
+    ul{
+        margin-left: 15px;
+        li{
+            font-size: 16px;
+            margin-bottom: 6px;
+        }
+    }
+}
+
+.dialog{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.close{
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 20px;
+    cursor: pointer;
+    color: white;
+    @media screen and (max-width: 500px){
+        top: 10px;
+        right: 10px;
+    }
+}
+
+.dialog-body{
+    margin: 100px auto;
+    width: 400px;
+    height: auto;
+    background-color: white;
+    border-radius: 10px;
+    @media screen and (max-width: 500px){
+        margin: 50px auto;
+        width: 290px;
+    }
+}
+
+.consultation{
+    padding: 0 15px;
+    margin: 50px 0 40px;
+    h2{
+        font-size: 40px;
+        font-weight: normal;
+        text-align: center;
+        margin-bottom: 25px;
+    }
+    h3{
+        font-size: 26px;
+        text-align: center;
+        text-transform: uppercase;
+        margin-bottom: 40px;
+    }
+}
+
+form{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    @media screen and (max-width: 768px){
+        flex-direction: column;
+    }
+    .form-group{
+        width: 35%;
+        @media screen and (max-width: 768px){
+            width: 100%;
+            margin-bottom: 15px;
+        }
+    }
+    .btn-wrapper{
+        width: 20%;
+        @media screen and (max-width: 768px){
+            width: 100%;
+        }
+    }
+}
+
+input{
+    width: 100%;
+    height: 40px;
+    outline: none;
+}
+
+input[type=text]{
+    border: 1px solid rgb(117, 117, 117);
+    padding: 0 10px;
+    margin-top: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    &:focus{
+        border-color: rgb(0, 140, 255);
+        box-shadow: 0 0 2px rgb(0, 140, 255);
+    }
+}
+
+.btn-cons{
+    cursor: pointer;
+    background-color: rgb(252, 76, 1);
+    border: 1px solid rgb(231, 69, 0);
+    color: white;
+    font-size: 18px;
+    text-transform: uppercase;
+    &:hover{
+        background-color: rgb(231, 69, 0);
+        border: 1px solid rgb(184, 55, 0);
+    }
+    &:disabled{
+        background-color: rgb(253, 113, 53);
+        border: 1px solid rgb(196, 80, 31);
+    }
+}
+
+.success{
+    padding: 20px;
+    p{
+        text-align: center;
+        font-weight: bold;
+        font-size: 17px;
+    }
+    .btn-wrap{
+        display: flex;
+        justify-content: center;
+        margin: 30px 0 0;
+        .btn{
+            width: 300px;
+            height: 40px;
+            line-height: 40px;
+        }
+    }
+}
+
+::ng-deep {
+    .slide-wrapper{
+        z-index: -1;
+    }
+    .slide{
+        background-size: contain !important;
+    }
+    .slider-nav{
+        cursor: pointer;
+        outline: none;
+        border-radius: 5px;
+        &:hover{
+            background-color: rgb(190, 190, 190) !important;
+        }
+    }
+}

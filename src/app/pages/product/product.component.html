@@ -1,0 +1,71 @@
+<div class="promo" *ngFor="let c of categories">
+    <div class="promo-img" [style.background-image]="'url(' + c.promoImage + ')'">
+        <div class="promo-content">
+            <div class="cat-name">{{ category?.nameUA }}</div>
+            <div class="discount">
+                <p class="again">Знову в школу!</p>
+                <p>Знижки до -35%</p>
+            </div>
+            <div class="text">
+                <p>&#9745; Доставка за 24 години - безплатно</p>
+                <p>&#9745; Офіційна гарантія - 2 роки</p>
+            </div>
+            <a class="btn" pageScroll href="#consultation">Допомога у виборі</a>
+            <div class="date">Акція діє до 31.09.2020</div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="products">
+        <div class="product" *ngFor="let p of products">
+            <a [routerLink]="[ '/categories/'+p.category.nameEN, p.id ]" class="product-img">
+                <img [src]="p.images[0]" alt="">
+            </a>
+            <a class="product-name" [routerLink]="[ '/categories/'+p.category.nameEN, p.id ]">{{ p.name }}</a>
+            <p>LED | BT | Balance | Samsung 4.4 | TaoTao | App</p>
+            <div class="options">
+                <p>Сумка + пульт в подарунок</p>
+                <p>Доставка безплатно</p>
+            </div>
+            <div class="price">{{ p.price }} грн</div>
+            <button type="button" class="btn btn-buy" (click)="buy(p)">Купити</button>
+        </div>
+    </div>
+    <div class="consultation" id="consultation">
+        <h2>Потрібна консультація?</h2>
+        <h3>відповімо на всі ваші запитання!</h3>
+        <form>
+            <div class="form-group">
+                <label for="name">Ім'я *</label>
+                <input type="text" [(ngModel)]="name" name="name" id="name">
+            </div>
+            <div class="form-group">
+                <label for="phone">Телефон *</label>
+                <input type="text" [(ngModel)]="phone" name="phone" id="phone" (focus)="focus()" (input)="number()" maxlength="18">
+            </div>
+            <div class="btn-wrapper">
+                <input type="button" class="btn-cons" (click)="consultation()" [disabled]="!name || !validNumber ? true : false" value="Консультація">
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="dialog" *ngIf="dialog">
+    <span class="close" (click)="close()">&#10006;</span>
+    <div class="dialog-body">
+        <app-buy></app-buy>
+    </div>
+</div>
+
+<div class="dialog" *ngIf="success">
+    <span class="close" (click)="success = false">&#10006;</span>
+    <div class="dialog-body">
+        <div class="success">
+            <p>Ваша заявка на консультацію прийнята.</p>
+            <p>Очікуйте на дзвінок нашого менеджера</p>
+            <div class="btn-wrap">
+                <button type="button" class="btn" (click)="success = false">Назад</button>
+            </div>
+        </div>
+    </div>
+</div>

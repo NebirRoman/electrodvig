@@ -1,0 +1,37 @@
+<div class="container">
+    <div class="order" *ngIf="!success">
+        <div class="title">Оформлення замовлення</div>
+        <form class="form">
+            <div class="form-group">
+                <label for="phone">Телефон <span>*</span></label>
+                <div class="example">Наприклад: +38(097)-000-00-00</div>
+                <input type="text" [(ngModel)]="phone" name="phone" id="phone" (focus)="focus()" (input)="number()" maxlength="18">
+            </div>
+            <div class="form-group">
+                <label for="name">Ім'я <span>*</span></label>
+                <div class="example">Наприклад: Іван</div>
+                <input type="text" [(ngModel)]="name" name="name" id="name">
+            </div>
+            <div class="form-group">
+                <p>Спосіб доставки</p>
+                <div class="radio">
+                    <input type="radio" name="delivery" id="post" checked (click)="setDelivery('Нова Пошта')">
+                    <label for="post">Нова Пошта</label>
+                </div>
+                <div class="radio">
+                    <input type="radio" name="delivery" id="home" (click)="setDelivery('Адресна доставка')">
+                    <label for="home">Адресна доставка</label>
+                </div>
+            </div>
+            <div class="btn">
+                <input type="button" class="button" (click)="addOrder()" value="Замовити"
+                    [disabled]="!name || !validNumber ? true : false">
+            </div>
+        </form>
+    </div>
+    <div class="success" *ngIf="success">
+        <p>Ви успішно оформили замовлення!</p>
+        <p>Очікуйте на дзвінок нашого оператора.</p>
+        <button type="button" class="button" (click)="toMain()">На головну</button>
+    </div>
+</div>

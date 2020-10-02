@@ -1,0 +1,22 @@
+<header class="header">
+    <div class="contacts">
+        <div class="container">
+            <a class="logo" [routerLink]="['/main']">ELECTRODVIG</a>
+            <div>
+                <span class="phone">&#9742; (068)123-45-67</span>
+                <a [routerLink]="['contacts']">Контакти</a>
+            </div>
+        </div>
+    </div>
+    <div class="wrapper">
+        <input type="checkbox" class="toggle" id="check">
+        <label for="check">&#9776;</label>
+        <nav class="nav">
+            <div class="container container-nav">
+                <a class="nav-item main" *ngIf="main" [routerLink]="[ 'main' ]" routerLinkActive="active">головна</a>
+                <a class="nav-item" *ngFor="let cat of categories" [routerLink]="[ '/categories/' + cat.nameEN ]"
+                    routerLinkActive="active">{{ cat.nameUA }}</a>
+            </div>
+        </nav>
+    </div>
+</header>

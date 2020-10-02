@@ -1,0 +1,77 @@
+<div class="title">
+    <p>Категорії</p>
+    <button type="button" class="add" (click)="dialog = true">Додати</button>
+</div>
+<div class="cat-list">
+    <input type="search" class="filter" id="filter" [(ngModel)]="filter" name="filter"
+          placeholder="пошук...">
+    <table>
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Назва UA</th>
+                <th>Назва EN</th>
+                <th>Видалити</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let c of adminCategory | search:filter; let i=index">
+                <td>{{ i+1 }}</td>
+                <td>{{ c.nameUA }}</td>
+                <td>{{ c.nameEN }}</td>
+                <td>
+                    <input type="button" value="видалити" class="delete-btn" (click)="deleteModal(c)">
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="dialog" *ngIf="dialog">
+    <div class="dialog-body">
+        <div class="dialog-title">
+            <p>Додати нову категорію</p>
+            <div class="close" (click)="closeModal()">x</div>
+        </div>
+        <form>
+            <div class="form-group">
+                <label for="nameUA">Назва UA</label>
+                <input type="text" [(ngModel)]="nameUA" name="nameUA" id="nameUA">
+            </div>
+            <div class="form-group">
+                <label for="nameEN">Назва EN</label>
+                <input type="text" [(ngModel)]="nameEN" name="nameEN" id="nameEN">
+            </div>
+            <div class="form-group" >
+                <label for="catImage">Виберіть фото категорії</label>
+                <input (change)="uploadFile($event, true)" type="file" class="custom-file-input" id="catImage" *ngIf="!catImageStatus" required>
+            </div>
+            <div class="image" *ngIf="catImageStatus">
+                <img [src]="catImage" alt="">
+                <div (click)="deleteImg(true)" class="del-image">x</div>
+            </div>
+            <div class="form-group" >
+                <label for="promoImage">Виберіть промо фото</label>
+                <input (change)="uploadFile($event, false)" type="file" class="custom-file-input" id="promoImage" *ngIf="!promoImageStatus" required>
+            </div>
+            <div class="image" *ngIf="promoImageStatus">
+                <img [src]="promoImage" alt="">
+                <div (click)="deleteImg(false)" class="del-image">x</div>
+            </div>
+            <div class="btns">
+                <button type="button" class="close-btn btn" (click)="closeModal()">Закрити</button>
+                <button type="button" class="add-btn btn" (click)="addCategory()"
+                    [disabled]="!nameEN || !nameUA || !catImageStatus || !promoImageStatus ? true : false">Додати</button>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="dialog" *ngIf="dialogDel">
+    <div class="dialog-body body-delete">
+        <p>Видалити категорію?</p>
+        <div class="btn-wrapper">
+            <button type="button" (click)="dialogDel = false" class="close-btn btn">Скасувати</button>
+            <button type="button" (click)="deleteCategory()" class="delete-btn btn">Видалити</button>
+        </div>
+    </div>
+</div>

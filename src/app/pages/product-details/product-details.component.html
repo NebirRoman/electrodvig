@@ -1,0 +1,78 @@
+<div class="title">{{ product?.name }}</div>
+<div class="content">
+    <div class="container">
+        <div class="product">
+            <div class="product-img">
+                <div *ngIf="product">
+                    <ngx-slider [init]="slider" class="slider"></ngx-slider>
+                </div>
+            </div>
+            <div class="product-info">
+                <p class="name">{{ product?.name }}</p>
+                <p class="text">&#9745; сумка + пульт в подарунок!</p>
+                <p class="text">&#9745; безкоштовна доставка!</p>
+                <p class="text">&#9745; гарантія - 24 місяця</p>
+                <div class="buy">
+                    <button type="button" (click)="buy()">Купити</button>
+                    <span class="price">{{ product?.price }} грн</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="description">
+        <div class="container">
+            <div class="tech-desc">
+                <p>технічні характеристики</p>
+                <ul>
+                    <li *ngFor="let d of description">{{ d }}</li>
+                </ul>
+            </div>
+            <div class="del-set">
+                <p>комплект поставки</p>
+                <ul>
+                    <li *ngFor="let d of delSet">{{ d }}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="consultation" id="consultation">
+            <h2>Потрібна консультація?</h2>
+            <h3>відповімо на всі ваші запитання!</h3>
+            <form>
+                <div class="form-group">
+                    <label for="name">Ім'я *</label>
+                    <input type="text" [(ngModel)]="name" name="name" id="name">
+                </div>
+                <div class="form-group">
+                    <label for="phone">Телефон *</label>
+                    <input type="text" [(ngModel)]="phone" name="phone" id="phone" (focus)="focus()" (input)="number()" maxlength="18">
+                </div>
+                <div class="btn-wrapper">
+                    <input type="button" class="btn-cons" (click)="consultation()"
+                        [disabled]="!name || !validNumber ? true : false" value="Консультація">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="dialog" *ngIf="dialog">
+    <span class="close" (click)="close()">&#10006;</span>
+    <div class="dialog-body">
+        <app-buy></app-buy>
+    </div>
+</div>
+
+<div class="dialog" *ngIf="success">
+    <span class="close" (click)="success = false">&#10006;</span>
+    <div class="dialog-body">
+        <div class="success">
+            <p>Ваша заявка на консультацію прийнята.</p>
+            <p>Очікуйте на дзвінок нашого менеджера</p>
+            <div class="btn-wrap">
+                <button type="button" class="btn" (click)="success = false">Назад</button>
+            </div>
+        </div>
+    </div>
+</div>

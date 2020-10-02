@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "electrodvig-4f8de": {
+      "hosting": {
+        "electrodvig": [
+          "electrodvig-4f8de"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "electrodvig-4f8de"
+  }
+}

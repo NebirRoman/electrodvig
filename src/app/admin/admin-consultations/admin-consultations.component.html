@@ -1,0 +1,28 @@
+<div class="title">
+    <p>Заявки</p>
+</div>
+<div class="list">
+    <table>
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Дата</th>
+                <th>Ім'я</th>
+                <th>Телефон</th>
+                <th>Статус</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let c of cons | search:filter; let i = index">
+                <td>{{ i+1 }}</td>
+                <td>{{ c.date | date:shortDate }}</td>
+                <td>{{ c.name }}</td>
+                <td>{{ c.phone }}</td>
+                <td>
+                    <input type="checkbox" [checked]="c.status" (click)="changeStatus(c)" name="" id="status">
+                    <label for="status"><span *ngIf="c.status">виконано</span><span *ngIf="!c.status">нова</span></label>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
